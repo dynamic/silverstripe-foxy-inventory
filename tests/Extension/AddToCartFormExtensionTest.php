@@ -39,6 +39,7 @@ class AddToCartFormExtensionTest extends SapphireTest
         $form = $controller->AddToCartForm();
         $fields = $form->Fields();
         $this->assertInstanceOf(FieldList::class, $fields);
+        $this->assertNotNull($fields->dataFieldByName('expires'));
 
         // todo: add assertions to cover isOutOfStock() check via fixtures
     }
