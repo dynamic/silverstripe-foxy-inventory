@@ -38,7 +38,9 @@ class ProductExpirationManager extends DataExtension
                 ->setTitle('Cart Product Expiration'),
             $duration = NumericField::create('ExpirationMinutes')
                 ->setTitle('Expiration In Minutes')
-                ->setDescription("After the time listed above in minutes, this product will be removed from the user's cart"),
+                ->setDescription(
+                    "After the time listed above in minutes, this product will be removed from the user's cart"
+                ),
         ];
         $duration->displayIf('CartExpiration')->isChecked()->end();
         if ($this->owner->CartReservations()->exists()) {
