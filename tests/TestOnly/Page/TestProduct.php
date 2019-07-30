@@ -14,6 +14,6 @@ class TestProduct extends \Page
     private static $extensions = [
         Purchasable::class,
         ProductInventoryManager::class,
-        //ProductExpirationManager::class,
+        ProductExpirationManager::class,
     ];
 }
