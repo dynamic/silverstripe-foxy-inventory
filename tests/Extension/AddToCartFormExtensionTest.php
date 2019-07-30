@@ -3,6 +3,7 @@
 namespace Dynamic\Foxy\Inventory\Test\Extension;
 
 use Dynamic\Foxy\Form\AddToCartForm;
+use Dynamic\Foxy\Inventory\Test\TestOnly\Form\TestAddToCartForm;
 use Dynamic\Foxy\Inventory\Test\TestOnly\Page\TestProduct;
 use Dynamic\Foxy\Inventory\Test\TestOnly\Page\TestProductController;
 use SilverStripe\Dev\SapphireTest;
@@ -20,6 +21,7 @@ class AddToCartFormExtensionTest extends SapphireTest
      */
     protected static $extra_dataobjects = [
         TestProduct::class,
+        TestAddToCartForm::class,
     ];
 
     /**
@@ -36,7 +38,7 @@ class AddToCartFormExtensionTest extends SapphireTest
     {
         $object = $this->objFromFixture(TestProduct::class, 'one');
         $controller = TestProductController::create($object);
-        $form = $controller->AddToCartForm();
+        AddToCartForm::create($this->owner, __FUNCTION__, null, null, null, $controller->data());
         $fields = $form->Fields();
         $this->assertInstanceOf(FieldList::class, $fields);
         $this->assertNotNull($fields->dataFieldByName('expires'));
