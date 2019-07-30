@@ -40,7 +40,7 @@ class AddToCartFormExtensionTest extends SapphireTest
         $fields = $form->Fields();
         $this->assertInstanceOf(FieldList::class, $fields);
 
-        // todo: add assertions to cover CartExpiration and isOutOfStock() checks via fixtures
+        // todo: add assertions to cover isOutOfStock() check via fixtures
     }
 
     /**
