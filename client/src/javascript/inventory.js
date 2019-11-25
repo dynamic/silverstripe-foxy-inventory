@@ -21,6 +21,7 @@ var prepareBase = function (url) {
         return prepareBase(base);
     };
 
+var FC = FC || {};
 FC.onLoad = (function (_super) {
     return function () {
         if (typeof _super !== 'undefined') {
@@ -43,5 +44,5 @@ FC.onLoad = (function (_super) {
                 });
             });
         });
-    }
+    };
 })(FC.onLoad);
