@@ -21,6 +21,7 @@ var prepareBase = function (url) {
         return prepareBase(base);
     };
 
+
 var FC = FC || {};
 FC.onLoad = (function (_super) {
     return function () {
@@ -33,6 +34,7 @@ FC.onLoad = (function (_super) {
                 jQuery.each(dataJSON.items, function (key, product) {
                     if (product.expires > 0) {
                         var code = product.parent_code === '' ? product.code : product.parent_code;
+
 
                         jQuery.ajax({
                             url: fetchBase() + '/reserveproduct/?code=' + code + '&id=' + product.id + '&expires=' + product.expires,
