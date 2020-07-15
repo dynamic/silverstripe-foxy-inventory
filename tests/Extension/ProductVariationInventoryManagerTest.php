@@ -5,14 +5,17 @@ namespace Dynamic\Foxy\Inventory\Test\Extension;
 use Dynamic\Foxy\Extension\Purchasable;
 use Dynamic\Foxy\Inventory\Extension\ProductExpirationManager;
 use Dynamic\Foxy\Inventory\Extension\ProductInventoryManager;
-use Dynamic\Foxy\Inventory\Extension\ProductOptionInventoryManager;
+use Dynamic\Foxy\Inventory\Extension\ProductVariationInventoryManager;
 use Dynamic\Foxy\Inventory\Test\TestOnly\Model\TestProductOption;
+use Dynamic\Foxy\Inventory\Test\TestOnly\Model\TestVariation;
 use Dynamic\Foxy\Inventory\Test\TestOnly\Page\TestProduct;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Dev\SapphireTest;
 use SilverStripe\Forms\FieldList;
 
-class ProductOptionInventoryManagerTest extends SapphireTest
+
+
+class ProductVariationInventoryManagerTest extends SapphireTest
 {
     /**
      * @var array
@@ -24,7 +27,7 @@ class ProductOptionInventoryManagerTest extends SapphireTest
      */
     protected static $extra_dataobjects = [
         TestProduct::class,
-        TestProductOption::class,
+        TestVariation::class,
     ];
 
     /**
@@ -37,7 +40,7 @@ class ProductOptionInventoryManagerTest extends SapphireTest
             ProductExpirationManager::class,
         ],
         TestProductOption::class => [
-            ProductOptionInventoryManager::class,
+            ProductVariationInventoryManager::class,
         ],
     ];
 

@@ -10,6 +10,9 @@ use Dynamic\Foxy\Inventory\Extension\ProductInventoryManager;
 use Dynamic\Foxy\Inventory\Test\TestOnly\Form\TestAddToCartForm;
 use Dynamic\Foxy\Inventory\Test\TestOnly\Page\TestProduct;
 use Dynamic\Foxy\Inventory\Test\TestOnly\Page\TestProductController;
+use Dynamic\Foxy\Model\OptionType;
+use Dynamic\Foxy\Model\Variation;
+use Dynamic\Foxy\SingleSignOn\Client\CustomerClient;
 use SilverStripe\Core\Config\Config;
 use SilverStripe\Dev\SapphireTest;
 use SilverStripe\Forms\FieldList;
@@ -56,7 +59,8 @@ class AddToCartFormExtensionTest extends SapphireTest
     {
         parent::setUp();
 
-        Config::modify()->set('Dynamic\\Foxy\\SingleSignOn\\Client\\CustomerClient', 'foxy_sso_enabled', false);
+        Config::modify()->set(CustomerClient::class, 'foxy_sso_enabled', false);
+        Config::modify()->set(Variation::class, 'has_one', ['TestProduct' => TestProduct::class]);
     }
 
     /**
