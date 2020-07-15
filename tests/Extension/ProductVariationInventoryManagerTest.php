@@ -10,6 +10,7 @@ use Dynamic\Foxy\Inventory\Test\TestOnly\Model\TestProductOption;
 use Dynamic\Foxy\Inventory\Test\TestOnly\Model\TestVariation;
 use Dynamic\Foxy\Inventory\Test\TestOnly\Page\TestProduct;
 use SilverStripe\Core\Config\Config;
+use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Dev\SapphireTest;
 use SilverStripe\Forms\FieldList;
 
@@ -39,7 +40,7 @@ class ProductVariationInventoryManagerTest extends SapphireTest
             ProductInventoryManager::class,
             ProductExpirationManager::class,
         ],
-        TestProductOption::class => [
+        TestVariation::class => [
             ProductVariationInventoryManager::class,
         ],
     ];
@@ -59,7 +60,7 @@ class ProductVariationInventoryManagerTest extends SapphireTest
      */
     public function testUpdateCMSFields()
     {
-        $object = $this->objFromFixture(TestProductOption::class, 'one');
+        $object = Injector::inst()->create(TestProduct::class);
         $fields = $object->getCMSFields();
         $this->assertInstanceOf(FieldList::class, $fields);
     }
@@ -70,7 +71,7 @@ class ProductVariationInventoryManagerTest extends SapphireTest
     public function testGetHasInventory()
     {
         /** @var TestProductOption $option */
-        $option = $this->objFromFixture(TestProductOption::class, 'one');
+        $option = Injector::inst()->create(TestVariation::class);
         $option->ControlInventory = false;
         $option->PurchaseLimit = 0;
         $this->assertFalse($option->getHasInventory());
