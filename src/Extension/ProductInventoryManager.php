@@ -69,22 +69,15 @@ class ProductInventoryManager extends DataExtension
      */
     public function updateGetIsAvailable(&$available)
     {
-        if ($this->owner->ControlInventory && !$this->owner->Variations()->count()) {
-            $reserved = $this->getCartReservations()->count();
-            $sold = $this->getNumberPurchased();
-
-            if ((int)$reserved + (int)$sold >= (int)$this->owner->PurchaseLimit) {
-                $available = true;
-            } else {
-                $available = false;
-            }
-        } elseif ($this->owner->Variations()->count()) {
+        if ($this->owner->Variations()->count()) {
             foreach ($this->owner->Variations() as $variation) {
                 $available = false;
                 if ($variation->getIsAvailable()) {
                     $available = true;
                 }
             }
+        } elseif ($this->getHasInventory()) {
+            $available = $this->getIsProductAvailable();
         }
     }
 
