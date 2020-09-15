@@ -37,18 +37,7 @@ class ProductExpirationManager extends DataExtension
                 ),
         ];
         $duration->displayIf('CartExpiration')->isChecked()->end();
-        if ($this->owner->getCartReservations()->exists()) {
-            $expirationGrid = GridField::create(
-                'CartReservations',
-                'Cart Reservations',
-                $this->owner->getCartReservations()
-                    ->filter('Expires:GreaterThan', date('Y-m-d H:i:s', strtotime('now')))
-                    ->sort('Created'),
-                $cartResConfig = GridFieldConfig_RecordViewer::create()
-            );
-            $expirationGrid->displayIf('CartExpiration')->isChecked()->end();
-            $expirationFields[] = $expirationGrid;
-        }
+
         $fields->addFieldsToTab(
             'Root.Inventory',
             Wrapper::create(
