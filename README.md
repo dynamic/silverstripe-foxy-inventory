@@ -2,6 +2,7 @@
 
 A simple inventory add-on for SilverStripe Foxy.
 
+![CI](https://github.com/dynamic/silverstripe-foxy-inventory/workflows/CI/badge.svg)
 [![Build Status](https://travis-ci.org/dynamic/silverstripe-foxy-inventory.svg?branch=master)](https://travis-ci.org/dynamic/silverstripe-foxy-inventory)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/dynamic/silverstripe-foxy-inventory/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/dynamic/silverstripe-foxy-inventory/?branch=master)
 [![Build Status](https://scrutinizer-ci.com/g/dynamic/silverstripe-foxy-inventory/badges/build.png?b=master)](https://scrutinizer-ci.com/g/dynamic/silverstripe-foxy-inventory/build-status/master)
@@ -39,11 +40,11 @@ Dynamic\Products\Page\Product:
   extensions:
     - Dynamic\Foxy\Inventory\Extension\ProductInventoryManager
     - Dynamic\Foxy\Inventory\Extension\ProductExpirationManager
-      
+
 Dynamic\Products\Page\ProductController:
   extensions:
     - Dynamic\Foxy\Inventory\Extension\ProductControllerExtension
-  
+
 ```
 
 Also apply the following Extensions to Foxy classes:
@@ -52,7 +53,7 @@ Also apply the following Extensions to Foxy classes:
 Dynamic\Foxy\Form\AddToCartForm:
   extensions:
     - Dynamic\Foxy\Inventory\Extension\AddToCartFormExtension
-      
+
 Dynamic\Foxy\Form\QuantityField:
   extensions:
     - Dynamic\Foxy\Inventory\Extension\QuantityFieldExtension
@@ -61,20 +62,20 @@ Dynamic\Foxy\Form\QuantityField:
 
 ## Maintainers
  *  [Dynamic](http://www.dynamicagency.com) (<dev@dynamicagency.com>)
- 
+
 ## Bugtracker
-Bugs are tracked in the issues section of this repository. Before submitting an issue please read over 
-existing issues to ensure yours is unique. 
- 
+Bugs are tracked in the issues section of this repository. Before submitting an issue please read over
+existing issues to ensure yours is unique.
+
 If the issue does look like a new bug:
- 
+
  - Create a new issue
- - Describe the steps required to reproduce your issue, and the expected outcome. Unit tests, screenshots 
+ - Describe the steps required to reproduce your issue, and the expected outcome. Unit tests, screenshots
  and screencasts can help here.
- - Describe your environment as detailed as possible: SilverStripe version, Browser, PHP version, 
+ - Describe your environment as detailed as possible: SilverStripe version, Browser, PHP version,
  Operating System, any installed SilverStripe modules.
- 
+
 Please report security issues to the module maintainers directly. Please don't file security issues in the bugtracker.
- 
+
 ## Development and contribution
 If you would like to make contributions to the module please ensure you raise a pull request and discuss with the module maintainers.
