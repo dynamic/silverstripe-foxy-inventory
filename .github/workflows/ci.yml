@@ -76,7 +76,7 @@ jobs:
           path: "build/logs/coverage/html"
 
       - name: "Run tests with squizlabs/php_codesniffer"
-        run: "vendor/bin/phpcs src/ tests/ -v --report=checkstyle --report-file=build/logs/checkstyle.xml"
+        run: "vendor/bin/phpcs src/ tests/ --standard=phpcs.xml.dist --report=checkstyle --report-file=build/logs/checkstyle.xml"
 
       - name: "Archive checkstyle results"
         uses: "actions/upload-artifact@v2"
