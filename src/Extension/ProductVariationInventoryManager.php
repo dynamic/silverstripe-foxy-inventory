@@ -25,7 +25,6 @@ class ProductVariationInventoryManager extends ProductInventoryManager
             }
 
             return $orders;
-
         }
         return false;
     }

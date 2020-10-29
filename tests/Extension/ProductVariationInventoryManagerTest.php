@@ -14,8 +14,6 @@ use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Dev\SapphireTest;
 use SilverStripe\Forms\FieldList;
 
-
-
 class ProductVariationInventoryManagerTest extends SapphireTest
 {
     /**
