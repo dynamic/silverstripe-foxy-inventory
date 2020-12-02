@@ -3,6 +3,7 @@
 namespace Dynamic\Foxy\Inventory\Test\Extension;
 
 use Dynamic\Foxy\Extension\Purchasable;
+use Dynamic\Foxy\Extension\PurchasableExtension;
 use Dynamic\Foxy\Inventory\Extension\ProductExpirationManager;
 use Dynamic\Foxy\Inventory\Extension\ProductInventoryManager;
 use Dynamic\Foxy\Inventory\Test\TestOnly\Page\TestProduct;
@@ -40,6 +41,9 @@ class ProductInventoryManagerTest extends SapphireTest
             ProductInventoryManager::class,
             ProductExpirationManager::class,
         ],
+        TestProductController::class => [
+            PurchasableExtension::class,
+        ]
     ];
 
     /**
@@ -77,7 +81,8 @@ class ProductInventoryManagerTest extends SapphireTest
     public function testFoxyStripePurchaseForm()
     {
         /** @var TestProduct $object */
-        $object = $this->objFromFixture(TestProduct::class, 'one');
+        $object = singleton(TestProduct::class);
+        $object->Available = 1;
         /** @var TestProductController $controller */
         $controller = TestProductController::create($object);
         $form = $controller->AddToCartForm();
