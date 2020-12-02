@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.0.4](https://github.com/dynamic/silverstripe-foxy-inventory/tree/1.0.4) (2020-12-02)
+
+[Full Changelog](https://github.com/dynamic/silverstripe-foxy-inventory/compare/1.1.0...1.0.4)
+
+**Merged pull requests:**
+
+- BUGFIX remove ProductOption references from tests [\#38](https://github.com/dynamic/silverstripe-foxy-inventory/pull/38) ([jsirish](https://github.com/jsirish))
+- BUGFIX no way to purge expired cart reservations [\#33](https://github.com/dynamic/silverstripe-foxy-inventory/pull/33) ([muskie9](https://github.com/muskie9))
+- BUGFIX ProductExpirationManager - show CartExpiration [\#30](https://github.com/dynamic/silverstripe-foxy-inventory/pull/30) ([jsirish](https://github.com/jsirish))
+
 ## [1.0.3](https://github.com/dynamic/silverstripe-foxy-inventory/tree/1.0.3) (2019-12-11)
 
 [Full Changelog](https://github.com/dynamic/silverstripe-foxy-inventory/compare/1.0.2...1.0.3)
