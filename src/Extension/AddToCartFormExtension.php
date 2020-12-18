@@ -10,6 +10,12 @@ use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\HeaderField;
 use SilverStripe\Forms\HiddenField;
 
+/**
+ * Class AddToCartFormExtension
+ * @package Dynamic\Foxy\Inventory\Extension
+ *
+ * @property-read AddToCartFormExtension|AddToCartForm $owner
+ */
 class AddToCartFormExtension extends Extension
 {
     /**
@@ -18,18 +24,7 @@ class AddToCartFormExtension extends Extension
     public function updateProductFields(FieldList &$fields)
     {
         if ($this->owner->getProduct()->CartExpiration) {
-            $fields->insertAfter(
-                'weight',
-                HiddenField::create('expires')
-                    ->setValue(
-                        AddToCartForm::getGeneratedValue(
-                            $this->owner->getProduct()->Code,
-                            'expires',
-                            $this->owner->getProduct()->ExpirationMinutes,
-                            'value'
-                        )
-                    )
-            );
+            $this->owner->getExpirationHelper()->addExpiration($this->owner->getProduct()->ExpirationMinutes);
         }
 
         if ($this->isOutOfStock()) {
