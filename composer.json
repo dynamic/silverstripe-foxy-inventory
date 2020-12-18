@@ -15,7 +15,7 @@
         }
     ],
     "require": {
-        "dynamic/silverstripe-foxy": "^1.0",
+        "dynamic/silverstripe-foxy": "^1.3.2",
         "dynamic/silverstripe-foxy-orders": "^1.0",
         "unclecheese/display-logic": "^2.0"
     },
