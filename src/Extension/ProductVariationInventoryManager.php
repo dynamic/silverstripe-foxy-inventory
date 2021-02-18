@@ -13,26 +13,6 @@ use SilverStripe\ORM\ArrayList;
 class ProductVariationInventoryManager extends ProductInventoryManager
 {
     /**
-     * @return ArrayList|bool
-     */
-    public function getOrders()
-    {
-        if ($this->owner->ID) {
-            $orderVariations = OrderVariation::get()->filter('VariationID', $this->owner->ID);
-            if ($orderVariations) {
-                $orders = ArrayList::create();
-                foreach ($orderVariations as $orderVariation) {
-                    $orderDetail = OrderDetail::get()->byID($orderVariation->OrderDetailID);
-                    $orders->push($orderDetail);
-                }
-            }
-
-            return isset($orders) ? $orders : false;
-        }
-        return false;
-    }
-
-    /**
      * @param $available
      */
     public function updateGetIsAvailable(&$available)
@@ -40,5 +20,37 @@ class ProductVariationInventoryManager extends ProductInventoryManager
         if ($this->getHasInventory()) {
             $available = $this->getIsProductAvailable();
         }
+    }
+
+    /**
+     * @return int
+     */
+    public function getNumberPurchasedUpdate()
+    {
+        $ct = 0;
+        if ($this->getOrders()) {
+            foreach ($this->getOrders() as $order) {
+                $ct += $order->Quantity;
+            }
+        }
+        return $ct;
+    }
+
+    /**
+     * @return $this|ProductVariationInventoryManager
+     */
+    protected function setOrders()
+    {
+        if ($this->owner->ID) {
+            if ($orderVariations = OrderVariation::get()->filter('VariationID', $this->owner->ID)) {
+                $this->orders = OrderDetail::get()->byIDs($orderVariations->column());
+
+                return $this;
+            }
+        }
+
+        $this->orders = false;
+
+        return $this;
     }
 }
